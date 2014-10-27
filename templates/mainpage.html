@@ -24,35 +24,21 @@
 				<a class="navbar-brand" href="#">Custom Timesheet</a>
 			</div>
 			<div class="navbar-collapse collapse">
+				<ul id="navbarLogin" class="nav navbar-nav navbar-right">
+					<form action="/login" method="post">
+						<ul id="navbarLogin" class="nav navbar-nav navbar-right">
+							<li><input type="text" name="username" class="form-control" placeholder="Username"></li>
+							<li><input type="password" name="password" class="form-control" placeholder="Password"></li>
+							<li><input type="submit" value="Login"></li>
+						</ul>
+					</form>
 			</div><!--/.nav-collapse -->
 		</div>
 	</div>
 
  	<div class="container">
- 		<h3>Existing User? Log In Here:</h3>
- 		<form action-"/" method="post">
-		<table>
-			<tr>
-				<td>Username: </td>
-				<td><input type="text" name="username"></td>
-			</tr>
-			<tr>
-				<td>Password: </td>
-				<td><input type="password" name="password"></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" value="Login"></td>
-			</tr>
-		</table>
-		</form>
- 	</div>
-
- 	<br>
-
- 	<div class="container">
  		<h3>New User? Register Here:</h3>
- 		<form action-"/" method="post">
+ 		<form action="/register" method="post">
 		<table>
 			<tr>
 				<td>First Name: </td>
@@ -77,6 +63,8 @@
 		</table>
 		</form>
  	</div>
+
+ 	<div id="error" hidden="True">Username is already taken!</div>
  
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
