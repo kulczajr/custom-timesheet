@@ -8,8 +8,8 @@
 	<link rel="stylesheet" type="text/css" href="static/stylesheets/mainpage.css" />
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.css">
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -29,10 +29,36 @@
 	</div>
 
  	<div class="container">
- 		<h3>Welcome to your timesheet!</h3>
+ 		<h3>Welcome to your timesheet, {{first_name}} {{last_name}}!</h3>
+ 	</div>
+
+ 	<div class="container">
+    	<table id="timesheet_table" class="display">
+		    <thead>
+		        <tr>
+		            <th>Position</th>
+		            <th>Sunday</th>
+		            <th>Monday</th>
+		            <th>Tuesday</th>
+		            <th>Wednesday</th>
+		            <th>Thursday</th>
+		            <th>Friday</th>
+		            <th>Saturday</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		    </tbody>
+		</table>
  	</div>
  
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ 	<script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+	<script src="//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+	<script>
+	$(document).ready( function () {
+    	$('#timesheet_table').DataTable();
+	});
+	</script>
 </body>
 </html>
