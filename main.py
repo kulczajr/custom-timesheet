@@ -50,12 +50,22 @@ class BaseHandler(webapp2.RequestHandler):
 
 class MainPage(BaseHandler):
     def get(self):
-        template = jinja_env.get_template("templates/mainpage.html")
-        self.response.write(template.render())
+        if (self.session.get('username')):
+            user_values = {
+                'username': self.session.get('username'),
+                'first_name': self.session.get('first_name'),
+                'last_name': self.session.get('last_name'),
+                'is_admin': self.session.get('is_admin')
+            }
+            template = jinja_env.get_template("templates/homepage.html")
+            self.response.write(template.render(user_values))
+        else:
+            template = jinja_env.get_template("templates/mainpage.html")
+            self.response.write(template.render())
 
     def post(self):
-        template = jinja_env.get_template("templates/mainpage.html")
-        self.response.write(template.render())
+            template = jinja_env.get_template("templates/mainpage.html")
+            self.response.write(template.render())
 
 class HomePage(BaseHandler):
     def get(self):
@@ -83,9 +93,9 @@ class RegisterAction(BaseHandler):
                     new_employee = Employee(parent=employee_key(username), login_name=username, password=password, first_name=first_name, last_name=last_name)
                     new_employee.put()
                     self.session['username'] = username
-                    self.session['first_name'] = employees[0].first_name
-                    self.session['last_name'] = employees[0].last_name
-                    self.session['is_admin'] = employees[0].is_admin
+                    self.session['first_name'] = first_name
+                    self.session['last_name'] = last_name
+                    self.session['is_admin'] = False
                     self.redirect('/home')
             else:
                 self.redirect('/')
@@ -112,9 +122,15 @@ class LoginAction(BaseHandler):
         else:
             self.redirect('/')
 
+class LogoutAction(BaseHandler):
+    def get(self):
+        self.session.clear()
+        self.redirect('/')
+
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/register', RegisterAction),
     ('/login', LoginAction),
+    ('/logout', LogoutAction),
     ('/home', HomePage)
 ], debug=True, config=config)
