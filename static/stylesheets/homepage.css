@@ -1,0 +1,15 @@
+body {
+  padding-top: 70px;
+}
+
+#logout {
+	font-size: 20px;
+}
+
+select {
+	width: 200px;
+}
+
+#user {
+	color: white;
+}

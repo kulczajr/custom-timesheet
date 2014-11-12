@@ -23,8 +23,11 @@
 				<a class="navbar-brand" href="#">Custom Timesheet</a>
 			</div>
 			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/adminLoad">Home</a></li>
+					<li><a style="color:white" href="/adminEdit">Add/Edit</a></li>
+				</ul>
 				<ul id="navbarSuccess" class="nav navbar-nav navbar-right">
-					<label id="user">{{username}}</label>
 					<a id="logout" href="/logout">Log Out</a>
 				</ul>
 			</div><!--/.nav-collapse -->
@@ -32,35 +35,26 @@
 	</div>
 
  	<div class="container">
- 		<h3>Welcome to your timesheet, {{first_name}} {{last_name}}!</h3>
+ 		<input id="position" placeholder="New Position"></input>
+ 		<button id="createPosition">Add</button>
  	</div>
 
  	<div class="container">
- 		<select id="weekSelect"></select>
-    	<table id="timesheet_table" class="display">
-		    <thead>
-		        <tr>
-		            <th>Position</th>
-		            <th>Sunday</th>
-		            <th>Monday</th>
-		            <th>Tuesday</th>
-		            <th>Wednesday</th>
-		            <th>Thursday</th>
-		            <th>Friday</th>
-		            <th>Saturday</th>
-		        </tr>
-		    </thead>
-		    <tbody id="timesheet_body">
-		    </tbody>
-		</table>
+ 		<select id="employees">
+ 			{% for employee in employee_list %}
+				<option value="{{employee.login_name}}">{{employee.first_name}} {{employee.last_name}}</option>
+			{% endfor %}
+ 		</select>
+ 		<select id="notUserPositions">
+		</select>
+ 		<button id="addPosition">Add Position</button>
  	</div>
- 	<button id="saveTimesheet">Save</button>
- 	<button id="submitTimesheet">Submit For Approval</button>
+ 	<select id="userPositions">
+	</select>
+ 	<button id="removePosition">Remove Position</button>
  
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
- 	<script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
-	<script src="//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-	<script src="static/js/homepage.js"></script>
+	<script src="static/js/admin_edit.js"></script>
 </body>
 </html>

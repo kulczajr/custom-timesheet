@@ -23,6 +23,10 @@
 				<a class="navbar-brand" href="#">Custom Timesheet</a>
 			</div>
 			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a style="color:white" href="/adminLoad">Home</a></li>
+					<li><a href="/adminEdit">Add/Edit</a></li>
+				</ul>
 				<ul id="navbarSuccess" class="nav navbar-nav navbar-right">
 					<label id="user">{{username}}</label>
 					<a id="logout" href="/logout">Log Out</a>
@@ -32,35 +36,65 @@
 	</div>
 
  	<div class="container">
- 		<h3>Welcome to your timesheet, {{first_name}} {{last_name}}!</h3>
+ 		<h3>Welcome!</h3>
  	</div>
 
  	<div class="container">
  		<select id="weekSelect"></select>
-    	<table id="timesheet_table" class="display">
+    	<table id="admin_table" class="display table table-striped table-hover table-condensed table-responsive">
 		    <thead>
 		        <tr>
-		            <th>Position</th>
-		            <th>Sunday</th>
-		            <th>Monday</th>
-		            <th>Tuesday</th>
-		            <th>Wednesday</th>
-		            <th>Thursday</th>
-		            <th>Friday</th>
-		            <th>Saturday</th>
+		            <th>Name</th>
+		            <th>Total Hours</th>
+		            <th>Is Submitted?</th>
+		            <th>Is Approved?</th>		            
 		        </tr>
 		    </thead>
-		    <tbody id="timesheet_body">
+		    <tbody id="admin_body">
 		    </tbody>
 		</table>
  	</div>
- 	<button id="saveTimesheet">Save</button>
- 	<button id="submitTimesheet">Submit For Approval</button>
+
+ 	<div class="modal fade" id="timesheet_modal" tabindex="-1" role="dialog" aria-labelledby="Timesheet" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">Timesheet</h4>
+				</div>
+				<div class="modal-body">
+					<div class="container">
+				    	<table id="timesheet_table" class="display">
+						    <thead>
+						        <tr>
+						            <th>Position</th>
+						            <th>Sunday</th>
+						            <th>Monday</th>
+						            <th>Tuesday</th>
+						            <th>Wednesday</th>
+						            <th>Thursday</th>
+						            <th>Friday</th>
+						            <th>Saturday</th>
+						            <th>Total Hours</th>
+						        </tr>
+						    </thead>
+						    <tbody id="timesheet_body">
+						    </tbody>
+						</table>
+				 	</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button id="approve" type="submit" class="btn btn-success">Approve</button>
+				</div>
+			</div>
+		</div>
+	</div>
  
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
  	<script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 	<script src="//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-	<script src="static/js/homepage.js"></script>
+	<script src="static/js/admin_home.js"></script>
 </body>
 </html>
