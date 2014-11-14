@@ -1,0 +1,46 @@
+body {
+	background-color: #F0F0F0;
+  	padding-top: 70px;
+  	margin: 0;
+}
+
+#user {
+	font-size: 20px;
+	color: #ddd;
+	padding-right: 20px;
+	padding-top: 10px;
+}
+
+#logout {
+	font-size: 20px;
+	margin-top: 10px;
+	padding-top: 10px;
+}
+
+.name {
+	text-align: center;
+	font-weight: bold;
+}
+
+#position {
+	font-size: 16px;
+	height: 30px;
+}
+
+.create, .manage {
+	padding-top: 20px;
+}
+
+#notUserPositions, #userPositions {
+	margin-left: 30px;
+}
+
+select {
+	font-size: 16px;
+	height: 30px;
+	width: 150px;
+}
+
+optgroup {
+	font-size: 16px;
+}

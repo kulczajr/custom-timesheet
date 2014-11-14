@@ -7,8 +7,7 @@
 	<title>Custom Timesheet</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="static/stylesheets/homepage.css" />
+	<link rel="stylesheet" type="text/css" href="static/stylesheets/admin_edit.css" />
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -28,33 +27,37 @@
 					<li><a style="color:white" href="/adminEdit">Add/Edit</a></li>
 				</ul>
 				<ul id="navbarSuccess" class="nav navbar-nav navbar-right">
+					<label id="user">Logged in as: {{username}}</label>
 					<a id="logout" href="/logout">Log Out</a>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
 	</div>
 
- 	<div class="container">
- 		<input id="position" placeholder="New Position"></input>
- 		<button id="createPosition">Add</button>
+	<div class="container ">
+ 		<h2 class="name">Add/Edit Positions</h2>
  	</div>
 
- 	<div class="container">
+ 	<div class="container create">
+ 		<h4>Create A New Position:</h4>
+ 		<input id="position" placeholder="New Position"></input>
+ 		<button type="button" class="btn btn-default" id="createPosition">Create Position</button>
+ 	</div>
+
+ 	<div class="container manage">
+ 		<h4>Manage Current Employee Positions:</h4>
  		<select id="employees">
  			{% for employee in employee_list %}
 				<option value="{{employee.login_name}}">{{employee.first_name}} {{employee.last_name}}</option>
 			{% endfor %}
  		</select>
- 		<select id="notUserPositions">
-		</select>
- 		<button id="addPosition">Add Position</button>
+ 		<select id="notUserPositions"></select>
+ 		<button type="button" class="btn btn-primary" id="addPosition">Add Position</button>
+ 		<select id="userPositions"></select>
+ 		<button type="button" class="btn btn-danger" id="removePosition">Remove Position</button>
  	</div>
- 	<select id="userPositions">
-	</select>
- 	<button id="removePosition">Remove Position</button>
  
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script src="static/js/admin_edit.js"></script>
 </body>
 </html>

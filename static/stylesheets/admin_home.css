@@ -1,0 +1,80 @@
+body {
+	background-color: #F0F0F0;
+  	padding-top: 70px;
+  	margin: 0;
+}
+
+#user {
+	font-size: 20px;
+	color: #ddd;
+	padding-right: 20px;
+	padding-top: 10px;
+}
+
+#logout {
+	font-size: 20px;
+	margin-top: 10px;
+	padding-top: 10px;
+}
+
+.name {
+	text-align: center;
+	font-weight: bold;
+}
+
+.week {
+	margin-top:20px;
+	margin-bottom: 50px;
+}
+
+#weekSelect {
+	font-size: 16px;
+	height: 30px;
+	width: 150px;
+}
+
+optgroup {
+	font-size: 16px;
+}
+
+@media (min-width: 600px) {
+  .table-wrapper {
+    padding: 10px 30px 5px;
+    border: 3px solid #ccc;
+    border-radius: 15px;
+    box-shadow: #ddd 2px 2px 0px;
+  }
+}
+
+#admin_table th {
+  font-size: 1.5em;
+}
+
+#admin_table {
+	table-layout: fixed;
+}
+
+.approved {
+	background-color: #C2F0C2;
+}
+
+.unsubmitted {
+	background-color: #FFC2B2;
+}
+
+#admin_table td {
+	font-size: 16px;
+}
+
+td, th {
+	text-align: center;
+}
+
+#timesheet_table {
+	width: 45%;
+	overflow: auto;
+}
+
+.wrapper {
+  	overflow: auto;
+}

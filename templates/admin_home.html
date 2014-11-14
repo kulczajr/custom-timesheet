@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="static/stylesheets/homepage.css" />
+	<link rel="stylesheet" type="text/css" href="static/stylesheets/admin_home.css" />
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -28,31 +28,37 @@
 					<li><a href="/adminEdit">Add/Edit</a></li>
 				</ul>
 				<ul id="navbarSuccess" class="nav navbar-nav navbar-right">
-					<label id="user">{{username}}</label>
+					<label id="user">Logged in as: {{username}}</label>
 					<a id="logout" href="/logout">Log Out</a>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
 	</div>
 
- 	<div class="container">
- 		<h3>Welcome!</h3>
+	<div class="container">
+ 		<h2 class="name">{{first_name}} {{last_name}}'s Administration Page</h2>
+ 	</div>
+
+ 	<div class="container week">
+ 		<h4 class="select">Select a week:</h4>
+ 		<select id="weekSelect"></select>
  	</div>
 
  	<div class="container">
- 		<select id="weekSelect"></select>
-    	<table id="admin_table" class="display table table-striped table-hover table-condensed table-responsive">
+ 		<div class="table-wrapper">
+    	<table id="admin_table" class="display table table-condensed table-responsive">
 		    <thead>
 		        <tr>
 		            <th>Name</th>
 		            <th>Total Hours</th>
-		            <th>Is Submitted?</th>
-		            <th>Is Approved?</th>		            
+		            <th class="hidden-xs hidden-sm">Is Submitted?</th>
+		            <th class="hidden-xs hidden-sm">Is Approved?</th>		            
 		        </tr>
 		    </thead>
 		    <tbody id="admin_body">
 		    </tbody>
 		</table>
+		</div>
  	</div>
 
  	<div class="modal fade" id="timesheet_modal" tabindex="-1" role="dialog" aria-labelledby="Timesheet" aria-hidden="true">
@@ -64,23 +70,25 @@
 				</div>
 				<div class="modal-body">
 					<div class="container">
+						<div class="wrapper">
 				    	<table id="timesheet_table" class="display">
 						    <thead>
 						        <tr>
 						            <th>Position</th>
-						            <th>Sunday</th>
-						            <th>Monday</th>
-						            <th>Tuesday</th>
-						            <th>Wednesday</th>
-						            <th>Thursday</th>
-						            <th>Friday</th>
-						            <th>Saturday</th>
-						            <th>Total Hours</th>
+						            <th>Sun</th>
+						            <th>Mon</th>
+						            <th>Tues</th>
+						            <th>Wed</th>
+						            <th>Thurs</th>
+						            <th>Fri</th>
+						            <th>Sat</th>
+						            <th>Total</th>
 						        </tr>
 						    </thead>
 						    <tbody id="timesheet_body">
 						    </tbody>
 						</table>
+						</div>
 				 	</div>
 				</div>
 				<div class="modal-footer">

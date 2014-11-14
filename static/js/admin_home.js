@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	var table = $('#admin_table').DataTable();
 
 	$("#weekSelect").html(getWeeks(new Date()));
 
@@ -18,7 +17,7 @@ $(document).ready(function() {
 			'username': $(this).attr('id')
 		};
 
-		if ($(':nth-child(3)', this).html() == "false" || $(':nth-child(4)', this).html() == "false") {
+		if ($(':nth-child(3)', this).html() == "false" || $(':nth-child(4)', this).html() == "true") {
 			$('#approve').hide();
 		} else {
 			$('#approve').show();
@@ -40,8 +39,8 @@ $(document).ready(function() {
 			data: data,
 			cache: false,
 			success: function(result) {
-				$("#weekSelect").trigger('change');
 				$('#timesheet_modal').modal('hide');
+				$("#weekSelect").trigger('change');
 			}
 		});
     });
@@ -60,12 +59,13 @@ function getWeeks(d) {
 		weeks.push(new Date(d.setDate(diff)));
 	}
 
-	var selectString = "";
+	var selectString = "<optgroup>";
 	weeks.forEach(function (day) {
 		day = day.toString();
 		day = day.split(" ");
 		selectString += "<option value='" + day[1] + " " + day[2] + ", " + day[3] + "'>" + day[1] + " " + day[2] + ", " + day[3] + "</option>";
 	});
+	selectString += "</optgroup>";
 	return selectString;
 }
 
@@ -85,10 +85,16 @@ function displayTimesheets(employees) {
 	var str = "";
 
 	for (var  i = 0; i < employees.length; i++) {
-		var temp = '<tr id=' + employees[i].username + ' class="employeeRow"><td>' + employees[i].first_name + ' ' + employees[i].last_name + '</td>';
+		if (employees[i].is_approved) {
+			var temp = '<tr id=' + employees[i].username + ' class="employeeRow approved"><td>' + employees[i].first_name + ' ' + employees[i].last_name + '</td>';
+		} else if (employees[i].is_submitted) {
+			var temp = '<tr id=' + employees[i].username + ' class="employeeRow"><td>' + employees[i].first_name + ' ' + employees[i].last_name + '</td>';
+		} else {
+			var temp = '<tr id=' + employees[i].username + ' class="employeeRow unsubmitted"><td>' + employees[i].first_name + ' ' + employees[i].last_name + '</td>';
+		}
 		temp += '<td>' + employees[i].hours + '</td>';
-		temp += '<td>' + employees[i].is_submitted + '</td>';
-		temp += '<td>' + employees[i].is_approved + '</td>';
+		temp += '<td class="hidden-xs hidden-sm">' + employees[i].is_submitted + '</td>';
+		temp += '<td class="hidden-xs hidden-sm">' + employees[i].is_approved + '</td>';
 
 		str += temp + '</tr>';
 	}
